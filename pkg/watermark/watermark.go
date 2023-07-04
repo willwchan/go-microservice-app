@@ -6,6 +6,7 @@ import (
 
 	"github.com/willwchan/go-microservice-app/internal"
 
+	"github.com/go-kit/kit/log"
 	"github.com/lithammer/shortuuid/v3"
 )
 
@@ -14,7 +15,7 @@ type watermarkService struct{}
 func NewService() Service { return &watermarkService{} }
 
 func (w *watermarkService) Get(_ context.Context, filters ...internal.Filter) ([]internal.Document, error) {
-	//queries the database using filters and returns the list of documents
+	// queries the database using filters and returns the list of documents
 	// return error if the filter(key) is invalid and also return error if no item found
 	doc := internal.Document{
 		Content: "book",
@@ -44,4 +45,16 @@ func (w *watermarkService) AddDocument(_ context.Context, doc *internal.Document
 	// return error if the doc is invalid and/or the database returns invalid entry error
 	newTicketID := shortuuid.New()
 	return newTicketID, nil
+}
+
+func (w *watermarkService) ServiceStatus(_ context.Context) (int, error) {
+	logger.Log("Checking the service health...")
+	return http.StatusOK, nil
+}
+
+var logger log.logger
+
+func init() {
+	logger = log.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))
+	logger = log.With(logger, "ts", log.DefaultTimestampUTC)
 }
