@@ -3,6 +3,7 @@ package watermark
 import (
 	"context"
 	"net/http"
+	"os"
 
 	"github.com/willwchan/go-microservice-app/internal"
 
@@ -52,7 +53,7 @@ func (w *watermarkService) ServiceStatus(_ context.Context) (int, error) {
 	return http.StatusOK, nil
 }
 
-var logger log.logger
+var logger log.Logger
 
 func init() {
 	logger = log.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))

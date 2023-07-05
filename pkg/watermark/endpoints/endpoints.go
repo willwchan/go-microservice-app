@@ -145,9 +145,9 @@ func (s *Set) Watermark(ctx context.Context, ticketID, mark string) (int, error)
 	return wmResp.Code, nil
 }
 
-var logger log.logger
+var logger log.Logger
 
 func init() {
-	logger = og.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))
+	logger = log.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))
 	logger = log.With(logger, "ts", log.DefaultTimestampUTC)
 }

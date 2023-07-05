@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pb;
 
-option go_package = "github.com/willwchan/go-microservice-app/api/v1/pb/watermark";
+option go_package = "api/v1/pb/watermark";
 
 service Watermark {
     rpc Get (GetRequest) returns (GetReply) {}
