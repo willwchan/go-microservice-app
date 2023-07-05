@@ -2,7 +2,7 @@ package transport
 
 import (
 	"context"
-	"github.com/willwchan/go-microservice=app/internal"
+	"github.com/willwchan/go-microservice-app/internal"
 	"github.com/willwchan/go-microservice-app/pkg/watermark/endpoints"
 
 	grpctransport "github.com/go-kit/kit/transport/grpc"
