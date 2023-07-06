@@ -1,5 +1,7 @@
 package endpoints
 
+import "github.com/willwchan/go-microservice-app/internal"
+
 type GetRequest struct {
 	Filters []internal.Filter `json:"filters,omitempty:`
 }
